@@ -1,65 +1,86 @@
-# OpenDraft · open-source software suite
+# OpenDraft
 
-OpenDraft is the first project in a sequential program for construction PDF workflows. **Release candidate 0.1.0 awaiting owner acceptance** — see [completion gate](docs/COMPLETION_GATE.md); no license has been selected, so nothing is published. Later GIS, document and construction-management products remain planning only.
+**Free, open-source PDF markup, measurement and takeoff for construction drawings — an alternative to Bluebeam Revu.**
 
-## Run locally
-Use Node 24 (verified: 24.18.0) and npm; tests use native TypeScript stripping.
+![OpenDraft reviewing a floor plan with cloud, rectangle and text markups](docs/images/opendraft.png)
+
+No subscription, no account, no telemetry. Your PDFs stay on your computer unless you choose to run the optional self-hosted collaboration server.
+
+> **Status: public test release (v0.1.1).** Everything below is implemented and covered by automated tests, but it has so far been tested on generated sample drawings, not a wide range of real-world project sets. Please try it on your drawings and [report anything that goes wrong](https://github.com/Hydrada/OpenDraft/issues). Keep copies of your originals.
+
+## Download
+
+Get the latest build from the [Releases page](https://github.com/Hydrada/OpenDraft/releases):
+
+| File | What it is |
+| --- | --- |
+| `OpenDraft-<version>-win-x64-setup.exe` | Windows installer (Windows 10/11, 64-bit) |
+| `OpenDraft-<version>-win.zip` | Portable Windows version, no install needed — unzip and run `OpenDraft.exe` |
+| `opendraft-web-<version>.zip` | Browser version to host on any static web server |
+| `opendraft-selfhost-<version>.zip` | Collaboration server for teams (Node.js) |
+
+**Windows SmartScreen warning:** the installer is not code-signed yet, so Windows shows "Windows protected your PC". Click **More info → Run anyway**. You can verify downloads against the SHA-256 hashes listed in the release notes.
+
+## What it does
+
+**Viewing and organizing**
+- Fast viewing of large drawing sets: tabs, thumbnails, search, bookmarks, layers, hyperlinks
+- Insert, extract, delete, reorder and rotate pages
+- Automatic sheet hyperlinks (references like `A-102` or `3/M201` become links)
+- OCR to make scanned drawings searchable (English, Spanish, French, German — runs offline)
+
+**Markups**
+- Rectangles, ellipses, lines, arrows, polylines, clouds, callouts, text, highlights, ink
+- Stamps: standard, custom, image/PDF artwork and dynamic stamps (`{date}`, `{author}`…)
+- Markups list with status, author, filters, sorting, comment threads and punch lists
+- CSV and PDF markup reports; layers, groups, locking and flattening
+- Imports existing markups from PDFs created in other apps
+- Reusable tool sets, shareable with your team
+
+**Measurement and takeoff**
+- Calibrate per page or per viewport; length, polyline, perimeter, area, angle, count, volume, radius, diameter, arc
+- Snapping to drawing endpoints, midpoints and intersections; cutouts, dynamic fill, sketch to scale
+- Quantity formulas and presets, takeoff legends and spaces
+- Export to CSV/Excel, live Excel quantity links, and standard PDF measurement annotations
+
+**Revisions and review**
+- Overlay and side-by-side comparison with alignment, batch comparison of whole sets
+- Automatic difference clouds, slip sheets and revision sets
+
+**Documents**
+- Fill and create PDF forms
+- True redaction (content removed, not just covered)
+- Digital signatures: sign, certify, timestamp, verify (trust, CRL/OCSP revocation, long-term validation)
+- Vector printing at full printer resolution (desktop app)
+
+**Teamwork (optional)**
+- Self-hosted server for real-time shared markups, roles and permissions, presence, offline queueing, audit log and backups — see [Self-hosting](docs/SELF_HOSTING.md)
+
+**Not supported:** 3D PDF models, editing the original text/graphics of a drawing, and encrypted or XFA-form PDFs. See [Known limitations](KNOWN_LIMITATIONS.md) for details.
+
+## Reporting problems
+
+Open an [issue](https://github.com/Hydrada/OpenDraft/issues/new/choose) with the steps to reproduce, your Windows version, and — if you can share it — the PDF. Never attach confidential drawings to a public issue.
+
+## Building from source
+
+Requires Node.js 24 and npm.
 
 ```powershell
 npm ci
-npm run dev
-```
-
-Open the printed localhost URL. PDFs stay in the browser. Select an authorized PDF, navigate/search, rotate a page and download a new PDF. Keep the source document. Static assets can be built with `npm run build` and served from apps/opendraft/dist using an ordinary static server; deployment hardening remains pending. Development server binds loopback.
-
-Current Phase 1 tools include page move/delete/insert/extract, undo/redo, selectable text, bookmarks, safe links, attachment downloads and view-only layer toggles. Recovery is off by default; opt in to retain unencrypted PDF bytes on this browser, restore after reload, or delete the retained session. Recovery does not restore undo history. Full single-source reordering retains the source catalog; other assemblies retain primary-source Info/XMP but may omit bookmarks, forms, attachments and layers. See docs/PAGE_ORGANIZATION.md; keep originals. Printing is a bounded 108dpi raster workflow, not professional vector printing. Built-asset reference hosting: docs/STATIC_HOSTING.md.
-
-Initial markup tools include rectangles, ellipses, lines, arrows, highlights, ink, text, callouts, revision clouds and text-based review stamps, with editable properties, sorting/structured filtering, locking and authored-markup flattening. Authored same-page [markup groups](docs/MARKUP_GROUPS.md) support atomic property, move, lock/unlock, delete and ungroup actions. Source annotations are displayed but not imported into the editable list. Signed/certified, encrypted and XFA rewrites are refused; this is not cryptographic signature validation. Rotation/markup-only exports preserve the original catalog in tested fixtures.
-
-Authored [annotation layers](docs/MARKUP_LAYERS.md) support visibility defaults and edit locks. The [markup review list](docs/MARKUP_REVIEW.md) provides combined filters, stable sorting and explicit counts for selections outside filtered results. List controls do not change PDF bytes or report scope.
-
-Local [comment threads](docs/MARKUP_COMMENTS.md) support replies, editing, subtree deletion, standard PDF reply export, reports and editable recovery; they are not authenticated collaboration.
-
-Text-based [review stamps](docs/STAMPS.md) support standard names and custom labels; they do not create verified digital signatures.
-
-Reusable markup presets can be saved locally and transferred using versioned JSON; see [preset instructions](docs/MARKUP_PRESETS.md). Preset contents are retained unencrypted separately from PDF recovery.
-
-Windows desktop development packaging: run `npm run desktop:runtime`, then `npm run desktop:package`. Unsigned installer/ZIP files appear under desktop/artifacts. Read docs/DESKTOP_PACKAGING.md for tested evidence and pending installer acceptance. Automated desktop tests launch only hidden, unfocusable windows; they do not execute the installer.
-
-## Verify
-```powershell
-npm run build
-npm test
-npm run desktop:runtime
-npm run test:e2e
-npm audit
-npm run audit:licenses
-```
-
+npm run dev                 # browser version at the printed localhost URL
+npm run build               # production web build in apps/opendraft/dist
+npm test                    # unit and integration tests
 npx playwright install chromium firefox webkit
-node scripts/benchmark-acceptance.mjs      # performance gate, writes docs/PERFORMANCE_ACCEPTANCE.md
-node scripts/release.mjs                   # reproducible web + self-host archives in release/<version>
-./scripts/installer-lifecycle.ps1 -Installer <old.exe> -Upgrade <new.exe> -UpgradeVersion <v>
+npm run desktop:runtime     # fetch the Electron runtime
+npm run test:e2e            # browser and desktop tests
+npm run desktop:package     # Windows installer and zip
 ```
 
-Read MASTER_ROADMAP.md, DECISIONS.md, TASKS.md, TEST_RESULTS.md, DEPENDENCIES.md and KNOWN_LIMITATIONS.md before resuming work. Research is in docs/research; phase acceptance criteria in docs/PHASE_1_ACCEPTANCE.md. No external publication/license selection has occurred.
+More: [desktop packaging](docs/DESKTOP_PACKAGING.md), [static hosting](docs/STATIC_HOSTING.md), [self-hosting](docs/SELF_HOSTING.md), [collaboration](docs/COLLABORATION.md), [feature comparison with Revu](docs/research/FEATURE_GAP_MATRIX.md), [test results](TEST_RESULTS.md).
 
-Drawing revision review: choose two open pages for a read-only color overlay or pixel difference view with manual translation/scale/rotation, reviewed local automatic alignment, sensitivity and resolution controls. Export PNG, raster PDF with attached JSON evidence, or JSON with exact source hashes. See [revision comparison](docs/REVISION_COMPARISON.md) for limits; broad alignment acceptance, perspective registration and shared revision history remain open. Reviewed multi-sheet comparison reports are described in [batch revision review](docs/BATCH_REVISION_REVIEW.md).
+## License
 
-Reviewed slip sheets support drawing replacement and [revision insertion with superseded stamps](docs/REVISION_INSERTION.md), local operation journals, undo/redo and editable recovery. [Saved revision plans](docs/REVISION_PLANS.md) export/import exact-source sheet mappings as bounded JSON and require fresh impact approval. These workflows do not provide shared project history or server collaboration.
+[MIT](LICENSE). Third-party components and their licenses are listed in [desktop/THIRD_PARTY_NOTICES.md](desktop/THIRD_PARTY_NOTICES.md) and [docs/generated/DEPENDENCY_LICENSES.json](docs/generated/DEPENDENCY_LICENSES.json).
 
-
-Standalone [drawing revision sets](docs/REVISION_SETS.md) accept current/revision PDF files or folders without opening tabs, prepare reviewed file/sheet mappings, and download sequential replacement/insertion results with per-job ZIP evidence. Source files and open workspaces are unchanged. Retained PDF measurement labels may be stale; independently review/calibrate new sheets. Encoded-byte limits are not RAM guarantees, and cancellation is checked between processing stages. See TEST_RESULTS for actual acceptance evidence; the full product remains in development.
-
-Use **Save drawing set plan** to transfer selected mappings as JSON. Reselect and prepare the exact PDFs, then **Import drawing set plan** to resume; file order/names may change, but PDF hashes/page counts must match uniquely. Every import requires fresh review and approval. Execution progress and PDFs are not saved in plans.
-
-After comparing revisions, [propose difference clouds](docs/DIFFERENCE_CLOUDS.md), select individual visual change regions and approve them to add clouds to the base drawing as one undoable edit. Clouds retain source/alignment evidence and preserve takeoff; they do not verify engineering changes.
-
-## Measurements and takeoff
-Picked points snap to existing measurement points and to painted drawing line endpoints, segment midpoints and line intersections (opt-out), Shift constrains horizontally/vertically. Measurements may carry a derived quantity (multiplier × waste) and reusable presets. **Export PDF with measurement annotations** writes standard Line/PolyLine/Polygon dimension annotations with a /Measure scale to a copy.
-
-## Collaboration and self-hosting
-Run the self-hosted server (`node server/collab-server.mjs serve`, see [SELF_HOSTING](docs/SELF_HOSTING.md)) to share markups, layers and takeoff between users with roles, presence, conflict review, offline queueing, a tamper-evident audit log and backups. Details and limits: [COLLABORATION](docs/COLLABORATION.md).
-
-## Optional assistant
-The sheet-index assistant proposes sheet numbers/titles locally on the CPU; an optional local model can be configured on the server (`OPENDRAFT_AI_URL`, `OPENDRAFT_AI_MODEL`). Suggestions are reviewed row by row and exported as CSV or bookmarks in a copy; they never change drawings, markups or measurements.
+OpenDraft is an independent project and is not affiliated with or endorsed by Bluebeam, Inc. "Bluebeam" and "Revu" are trademarks of their respective owner.

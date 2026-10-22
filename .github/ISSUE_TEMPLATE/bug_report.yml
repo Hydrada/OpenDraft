@@ -1,0 +1,42 @@
+name: Bug report
+description: Something doesn't work or gives a wrong result
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing OpenDraft! **Never attach confidential drawings** — this issue is public. A redacted or sample PDF that shows the problem is ideal.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead? Screenshots help.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open a PDF (size / number of pages / where it came from)
+        2. Choose the … tool
+        3. …
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Which version?
+      options: [Windows installer, Windows portable zip, Web version, Built from source]
+    validations:
+      required: true
+  - type: input
+    id: release
+    attributes:
+      label: OpenDraft version and Windows version
+      placeholder: e.g. 0.1.1 on Windows 11 24H2
+  - type: textarea
+    id: pdf
+    attributes:
+      label: About the PDF
+      description: Which program created it (AutoCAD, Revit, a scanner, Bluebeam…)? Can you share a non-confidential copy?

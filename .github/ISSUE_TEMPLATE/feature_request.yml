@@ -1,0 +1,16 @@
+name: Feature request
+description: Something you need for your work that OpenDraft can't do yet
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What are you trying to do?
+      description: Describe the task in your workflow (e.g. "count fixtures across 40 sheets and export to my estimate").
+    validations:
+      required: true
+  - type: textarea
+    id: today
+    attributes:
+      label: How do you do it today?
+      description: For example, the Bluebeam or other tool feature you use for this.
