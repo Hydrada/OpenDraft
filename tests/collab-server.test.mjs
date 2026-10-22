@@ -161,8 +161,8 @@ test('OCSP relay forwards only to allow-listed responders and returns authentic 
   const { PDFDocument } = await import('pdf-lib');
   const responder = await startTestOcspResponder();
   const dataDir = await mkdtemp(path.join(tmpdir(), 'opendraft-ocsp-relay-'));
-  // The test responder listens on IPv6 loopback; certificates name 127.0.0.1, so allow-list [::1]:4199 and map it.
-  const app = await createCollabServer({ dataDir, ocspHosts: ['[::1]:4199'] });
+  // The test responder listens on [::1] (Windows) or 127.0.0.1 (some Linux); allow-list both and use whichever answers.
+  const app = await createCollabServer({ dataDir, ocspHosts: ['[::1]:4199', '127.0.0.1:4199'] });
   await app.addUser('alice', password);
   await new Promise(resolve => app.server.listen(0, '127.0.0.1', resolve));
   t.after(async () => { responder.stop(); await app.close(); await rm(dataDir, { recursive: true, force: true }); });
@@ -175,7 +175,9 @@ test('OCSP relay forwards only to allow-listed responders and returns authentic 
   const pdf = await PDFDocument.create(); pdf.addPage();
   const [report] = await verifyPdfSignatures(await signPdf(await pdf.save(), identity), {
     trusted: readCertificates(new Uint8Array(await readFile('tests/fixtures/test-ca.pem'))),
-    ocsp: async (url, request) => { const response = await relay(url.replace('//127.0.0.1:', '//[::1]:'), request); assert.equal(response.status, 200); return new Uint8Array(Buffer.from((await response.json()).response, 'base64')); },
+    ocsp: async (url, request) => {
+      await responder.fetchOcsp(url, request); // finds which loopback address the responder is on
+      const response = await relay(url.replace('//127.0.0.1:', `//${responder.loopback()}:`), request); assert.equal(response.status, 200); return new Uint8Array(Buffer.from((await response.json()).response, 'base64')); },
   });
   assert.deepEqual([report.revocation, report.revocationSource], ['revoked', 'ocsp']);
 });
