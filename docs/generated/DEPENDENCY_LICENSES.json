@@ -1,0 +1,332 @@
+{
+  "generatedAt": "2026-10-22T16:13:16.810Z",
+  "scope": "Installed production npm packages, including installed optional dependencies. Metadata inventory only; bundled third-party notices require separate review.",
+  "packages": [
+    {
+      "name": "@napi-rs/canvas",
+      "version": "1.0.13",
+      "license": "MIT",
+      "path": "node_modules/@napi-rs/canvas",
+      "licenseFiles": [
+        "node_modules/@napi-rs/canvas/LICENSE"
+      ]
+    },
+    {
+      "name": "@napi-rs/canvas-win32-x64-msvc",
+      "version": "1.0.13",
+      "license": "MIT",
+      "path": "node_modules/@napi-rs/canvas-win32-x64-msvc",
+      "licenseFiles": []
+    },
+    {
+      "name": "@noble/hashes",
+      "version": "1.8.0",
+      "license": "MIT",
+      "path": "node_modules/pkijs/node_modules/@noble/hashes",
+      "licenseFiles": [
+        "node_modules/pkijs/node_modules/@noble/hashes/LICENSE"
+      ]
+    },
+    {
+      "name": "@pdf-lib/standard-fonts",
+      "version": "1.0.0",
+      "license": "MIT",
+      "path": "node_modules/@pdf-lib/standard-fonts",
+      "licenseFiles": [
+        "node_modules/@pdf-lib/standard-fonts/LICENSE.md"
+      ]
+    },
+    {
+      "name": "@pdf-lib/upng",
+      "version": "1.0.1",
+      "license": "MIT",
+      "path": "node_modules/@pdf-lib/upng",
+      "licenseFiles": [
+        "node_modules/@pdf-lib/upng/LICENSE"
+      ]
+    },
+    {
+      "name": "@tesseract.js-data/deu",
+      "version": "1.0.0",
+      "license": "MIT",
+      "path": "node_modules/@tesseract.js-data/deu",
+      "licenseFiles": []
+    },
+    {
+      "name": "@tesseract.js-data/eng",
+      "version": "1.0.0",
+      "license": "MIT",
+      "path": "node_modules/@tesseract.js-data/eng",
+      "licenseFiles": []
+    },
+    {
+      "name": "@tesseract.js-data/fra",
+      "version": "1.0.0",
+      "license": "MIT",
+      "path": "node_modules/@tesseract.js-data/fra",
+      "licenseFiles": []
+    },
+    {
+      "name": "@tesseract.js-data/spa",
+      "version": "1.0.0",
+      "license": "MIT",
+      "path": "node_modules/@tesseract.js-data/spa",
+      "licenseFiles": []
+    },
+    {
+      "name": "asn1js",
+      "version": "3.0.6",
+      "license": "BSD-3-Clause",
+      "path": "node_modules/asn1js",
+      "licenseFiles": [
+        "node_modules/asn1js/LICENSE"
+      ]
+    },
+    {
+      "name": "bmp-js",
+      "version": "0.1.0",
+      "license": "MIT",
+      "path": "node_modules/bmp-js",
+      "licenseFiles": [
+        "node_modules/bmp-js/LICENSE"
+      ]
+    },
+    {
+      "name": "bytestreamjs",
+      "version": "2.0.1",
+      "license": "BSD-3-Clause",
+      "path": "node_modules/bytestreamjs",
+      "licenseFiles": [
+        "node_modules/bytestreamjs/LICENSE"
+      ]
+    },
+    {
+      "name": "fflate",
+      "version": "0.8.3",
+      "license": "MIT",
+      "path": "node_modules/fflate",
+      "licenseFiles": [
+        "node_modules/fflate/LICENSE"
+      ]
+    },
+    {
+      "name": "idb-keyval",
+      "version": "6.3.0",
+      "license": "Apache-2.0",
+      "path": "node_modules/idb-keyval",
+      "licenseFiles": [
+        "node_modules/idb-keyval/LICENCE"
+      ]
+    },
+    {
+      "name": "is-url",
+      "version": "1.2.4",
+      "license": "MIT",
+      "path": "node_modules/is-url",
+      "licenseFiles": []
+    },
+    {
+      "name": "jsfeat",
+      "version": "0.0.8",
+      "license": "MIT",
+      "path": "node_modules/jsfeat",
+      "licenseFiles": [
+        "node_modules/jsfeat/LICENSE"
+      ],
+      "licenseEvidence": {
+        "license": "MIT",
+        "file": "LICENSE",
+        "sha256": "20c20cb25e05181e3b6c7d68814a3484858422d6fb3745a3a75787256d30cc72",
+        "reason": "Published package.json omits license metadata. The installed npm tarball LICENSE contains the MIT grant and Copyright (c) 2012 Eugene Zatepyakin. Preserve this license text in distributions.",
+        "source": "https://github.com/inspirit/jsfeat/blob/master/LICENSE"
+      }
+    },
+    {
+      "name": "node-fetch",
+      "version": "2.7.0",
+      "license": "MIT",
+      "path": "node_modules/node-fetch",
+      "licenseFiles": [
+        "node_modules/node-fetch/LICENSE.md"
+      ]
+    },
+    {
+      "name": "opencollective-postinstall",
+      "version": "2.0.3",
+      "license": "MIT",
+      "path": "node_modules/opencollective-postinstall",
+      "licenseFiles": [
+        "node_modules/opencollective-postinstall/LICENSE"
+      ]
+    },
+    {
+      "name": "pako",
+      "version": "1.0.11",
+      "license": "(MIT AND Zlib)",
+      "path": "node_modules/pako",
+      "licenseFiles": [
+        "node_modules/pako/LICENSE"
+      ]
+    },
+    {
+      "name": "pdf-lib",
+      "version": "1.17.1",
+      "license": "MIT",
+      "path": "node_modules/pdf-lib",
+      "licenseFiles": [
+        "node_modules/pdf-lib/LICENSE.md"
+      ]
+    },
+    {
+      "name": "pdfjs-dist",
+      "version": "6.4.299",
+      "license": "Apache-2.0",
+      "path": "node_modules/pdfjs-dist",
+      "licenseFiles": [
+        "node_modules/pdfjs-dist/LICENSE"
+      ]
+    },
+    {
+      "name": "pkijs",
+      "version": "3.4.3",
+      "license": "BSD-3-Clause",
+      "path": "node_modules/pkijs",
+      "licenseFiles": [
+        "node_modules/pkijs/LICENSE"
+      ]
+    },
+    {
+      "name": "pvtsutils",
+      "version": "1.3.6",
+      "license": "MIT",
+      "path": "node_modules/pvtsutils",
+      "licenseFiles": [
+        "node_modules/pvtsutils/LICENSE"
+      ]
+    },
+    {
+      "name": "pvutils",
+      "version": "1.2.0",
+      "license": "MIT",
+      "path": "node_modules/pvutils",
+      "licenseFiles": [
+        "node_modules/pvutils/LICENSE"
+      ]
+    },
+    {
+      "name": "regenerator-runtime",
+      "version": "0.13.11",
+      "license": "MIT",
+      "path": "node_modules/regenerator-runtime",
+      "licenseFiles": [
+        "node_modules/regenerator-runtime/LICENSE"
+      ]
+    },
+    {
+      "name": "tesseract.js",
+      "version": "7.0.0",
+      "license": "Apache-2.0",
+      "path": "node_modules/tesseract.js",
+      "licenseFiles": [
+        "node_modules/tesseract.js/LICENSE.md"
+      ]
+    },
+    {
+      "name": "tesseract.js-core",
+      "version": "7.0.0",
+      "license": "Apache-2.0",
+      "path": "node_modules/tesseract.js-core",
+      "licenseFiles": [
+        "node_modules/tesseract.js-core/LICENSE"
+      ]
+    },
+    {
+      "name": "tr46",
+      "version": "0.0.3",
+      "license": "MIT",
+      "path": "node_modules/tr46",
+      "licenseFiles": []
+    },
+    {
+      "name": "tslib",
+      "version": "2.8.1",
+      "license": "0BSD",
+      "path": "node_modules/asn1js/node_modules/tslib",
+      "licenseFiles": [
+        "node_modules/asn1js/node_modules/tslib/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "tslib",
+      "version": "2.8.1",
+      "license": "0BSD",
+      "path": "node_modules/pkijs/node_modules/tslib",
+      "licenseFiles": [
+        "node_modules/pkijs/node_modules/tslib/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "tslib",
+      "version": "2.8.1",
+      "license": "0BSD",
+      "path": "node_modules/pvtsutils/node_modules/tslib",
+      "licenseFiles": [
+        "node_modules/pvtsutils/node_modules/tslib/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "tslib",
+      "version": "1.14.1",
+      "license": "0BSD",
+      "path": "node_modules/tslib",
+      "licenseFiles": [
+        "node_modules/tslib/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "wasm-feature-detect",
+      "version": "1.9.0",
+      "license": "Apache-2.0",
+      "path": "node_modules/wasm-feature-detect",
+      "licenseFiles": [
+        "node_modules/wasm-feature-detect/LICENSE"
+      ]
+    },
+    {
+      "name": "webidl-conversions",
+      "version": "3.0.1",
+      "license": "BSD-2-Clause",
+      "path": "node_modules/webidl-conversions",
+      "licenseFiles": [
+        "node_modules/webidl-conversions/LICENSE.md"
+      ]
+    },
+    {
+      "name": "whatwg-url",
+      "version": "5.0.0",
+      "license": "MIT",
+      "path": "node_modules/whatwg-url",
+      "licenseFiles": [
+        "node_modules/whatwg-url/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "write-excel-file",
+      "version": "4.1.1",
+      "license": "MIT",
+      "path": "node_modules/write-excel-file",
+      "licenseFiles": [
+        "node_modules/write-excel-file/LICENSE"
+      ]
+    },
+    {
+      "name": "zlibjs",
+      "version": "0.3.1",
+      "license": "MIT",
+      "path": "node_modules/zlibjs",
+      "licenseFiles": [
+        "node_modules/zlibjs/LICENSE"
+      ]
+    }
+  ]
+}

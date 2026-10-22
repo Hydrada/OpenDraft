@@ -1,0 +1,2 @@
+V	361019165257Z		1001	unknown	/CN=OpenDraft Test Signer (good)/O=OpenDraft test fixture (not a real identity)
+R	361019165257Z	261022165257Z	1002	unknown	/CN=OpenDraft Test Signer (revoked)/O=OpenDraft test fixture (not a real identity)

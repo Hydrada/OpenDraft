@@ -1,0 +1,29 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+*.log
+.env
+.env.*
+!.env.example
+graphify-out/cache/
+desktop/artifacts/
+release/
+apps/opendraft/public/pdfjs/
+apps/opendraft/public/ocr/
+
+# Local tooling and private agent notes (not published)
+graphify-out/
+AGENTS.md
+docs/ACTIVE_GOAL.md
+docs/EXTERNAL_AGENT_COORDINATION.md
+docs/KNOWLEDGE_WORKFLOW.md
+scripts/sync-knowledge.ps1
+
+# Local tooling and private agent notes (not published)
+graphify-out/
+AGENTS.md
+docs/ACTIVE_GOAL.md
+docs/EXTERNAL_AGENT_COORDINATION.md
+docs/KNOWLEDGE_WORKFLOW.md
+scripts/sync-knowledge.ps1

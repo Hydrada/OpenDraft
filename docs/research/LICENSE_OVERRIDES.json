@@ -1,0 +1,9 @@
+{
+  "jsfeat@0.0.8": {
+    "license": "MIT",
+    "file": "LICENSE",
+    "sha256": "20c20cb25e05181e3b6c7d68814a3484858422d6fb3745a3a75787256d30cc72",
+    "reason": "Published package.json omits license metadata. The installed npm tarball LICENSE contains the MIT grant and Copyright (c) 2012 Eugene Zatepyakin. Preserve this license text in distributions.",
+    "source": "https://github.com/inspirit/jsfeat/blob/master/LICENSE"
+  }
+}

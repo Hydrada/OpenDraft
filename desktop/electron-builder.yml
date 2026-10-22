@@ -1,0 +1,71 @@
+appId: org.opendraft.desktop
+productName: OpenDraft
+electronVersion: 45.0.0
+asar: true
+npmRebuild: false
+directories:
+  output: desktop/artifacts
+files:
+  - desktop/main.cjs
+  - desktop/host.cjs
+  - apps/opendraft/dist/**
+  - package.json
+  - '!node_modules/**/*'
+  - '!desktop/artifacts/**/*'
+extraMetadata:
+  main: desktop/main.cjs
+extraFiles:
+  - from: node_modules/jsfeat/LICENSE
+    to: licenses/jsfeat-LICENSE.txt
+  - from: node_modules/jsfeat/build/jsfeat.js
+    to: licenses/jsfeat-upstream-source.txt
+  - from: node_modules/write-excel-file/LICENSE
+    to: licenses/write-excel-file-LICENSE.txt
+  - from: node_modules/fflate/LICENSE
+    to: licenses/fflate-LICENSE.txt
+  - from: desktop/THIRD_PARTY_NOTICES.md
+    to: licenses/THIRD_PARTY_NOTICES.md
+  - from: node_modules/pdfjs-dist/LICENSE
+    to: licenses/pdfjs-dist-LICENSE.txt
+  - from: node_modules/pdf-lib/LICENSE.md
+    to: licenses/pdf-lib-LICENSE.md
+  - from: node_modules/@pdf-lib/standard-fonts/LICENSE.md
+    to: licenses/pdf-lib-standard-fonts-LICENSE.md
+  - from: node_modules/@pdf-lib/upng/LICENSE
+    to: licenses/pdf-lib-upng-LICENSE.txt
+  - from: node_modules/pako/LICENSE
+    to: licenses/pako-LICENSE.txt
+  - from: node_modules/tslib/LICENSE.txt
+    to: licenses/tslib-LICENSE.txt
+  - from: node_modules/tesseract.js/LICENSE.md
+    to: licenses/tesseract.js-LICENSE.md
+  - from: node_modules/tesseract.js-core/LICENSE
+    to: licenses/tesseract.js-core-LICENSE.txt
+  - from: node_modules/pkijs/LICENSE
+    to: licenses/pkijs-LICENSE.txt
+  - from: node_modules/asn1js/LICENSE
+    to: licenses/asn1js-LICENSE.txt
+  - from: node_modules/pvtsutils/LICENSE
+    to: licenses/pvtsutils-LICENSE.txt
+  - from: node_modules/pvutils/LICENSE
+    to: licenses/pvutils-LICENSE.txt
+  - from: node_modules/bytestreamjs/LICENSE
+    to: licenses/bytestreamjs-LICENSE.txt
+  - from: node_modules/@noble/hashes/LICENSE
+    to: licenses/noble-hashes-LICENSE.txt
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+    - target: zip
+      arch: [x64]
+  signAndEditExecutable: false
+nsis:
+  oneClick: false
+  perMachine: false
+  allowElevation: false
+  allowToChangeInstallationDirectory: true
+  runAfterFinish: false
+  createDesktopShortcut: false
+  createStartMenuShortcut: true
+  artifactName: OpenDraft-${version}-win-${arch}-setup.${ext}
